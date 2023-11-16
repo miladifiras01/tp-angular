@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="alert alert-warning">
+    Le nombre de cv sélectionné est : {{ nb }}
+  </div>
+  <div class="col">
+    <app-list [cvs]="cvs$ | async"></app-list>
+  </div>
+  <div class="col">
+    <app-card></app-card>
+  </div>
+  <div>
+    <app-list-hired [embauches]="embauches"></app-list-hired>
+  </div>
+</div>
