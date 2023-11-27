@@ -1,9 +1,10 @@
+<app-autocomplete></app-autocomplete>
 <div class="row">
   <div class="alert alert-warning">
     Le nombre de cv sélectionné est : {{ nb }}
   </div>
-  <div class="col">
-    <app-list [cvs]="cvs$ | async"></app-list>
+  <div class="col" *ngIf="cvs$ | async as cvs">
+    <app-list [cvs]="filterCvs(cvExperience,cvs)" (cvExperience)="setCvExperience($event)"></app-list>
   </div>
   <div class="col">
     <app-card></app-card>

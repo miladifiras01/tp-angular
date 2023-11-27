@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EMPTY, Observable, catchError, first, ignoreElements, of, switchMap, tap } from 'rxjs';
+import { EMPTY, Observable, catchError, first, ignoreElements, map, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-detail-cv',
@@ -17,16 +17,15 @@ export class DetailCvComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.cv = this.cvService.getCvById(+id)
-      this.error = this.cv.pipe(
+      this.cv = this.route.data.pipe(
+        map((data) => data['cv'])
+      )
+      this.error = this.cv?.pipe(
         ignoreElements(),
         catchError((error) => {
           return of(error)
         })
       )
-    }
   }
   deleteCv() {
     this.cv?.pipe(first())

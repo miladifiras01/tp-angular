@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -15,17 +15,24 @@ export class AuthentificationService {
     }
    }
 
-
   private userSubject = new BehaviorSubject<User | null>(null);
-   
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  loggedIn$ = this.loggedIn.asObservable();
+  loggedOut$ = this.loggedIn$.pipe(
+    map((logged) => {
+      return !logged;
+    })
+  );
   setUser(user: User): void {
     this.userSubject.next(user);
+    this.loggedIn.next(true);
   }
 
   clearUser(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.userSubject.next(null);
+    this.loggedIn.next(false);
   }
 
   getUser(): Observable<User | null> {

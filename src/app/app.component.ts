@@ -10,10 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'ngGl42023';
-  user?: Observable<User | null>;
+  // user?: Observable<User | null>;
+  isAuthentificated = false;
   constructor(private authService: AuthentificationService) {}
   ngOnInit(){
-    this.user = this.authService.getUser()
+    this.authService.loggedIn$.subscribe(
+      (data)=>{
+        this.isAuthentificated = data
+      });
   }
   logout(){
     this.authService.clearUser();

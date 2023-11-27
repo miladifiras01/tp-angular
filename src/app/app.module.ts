@@ -30,6 +30,9 @@ import { ToastrModule } from "ngx-toastr";
 import { SliderComponent } from "./rxjs/slider/slider.component";
 import { ListHiredComponent } from './cv/list-hired/list-hired.component';
 import { LoginComponent } from './login/login/login.component';
+import { SearchCvComponent } from './cv/autocomplete/autocomplete.component';
+import { MergeComponent } from './merge/merge.component';
+import { ProduitComponent } from './produit/produit/produit.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { LoginComponent } from './login/login/login.component';
     SliderComponent,
     ListHiredComponent,
     LoginComponent,
+    SearchCvComponent,
+    MergeComponent,
+    ProduitComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ export class Cv {
     public id = 0,
     public name = "",
     public firstname = "",
-    public path = ""
+    public path = "",
+    public age = 0
   ) {}
 }

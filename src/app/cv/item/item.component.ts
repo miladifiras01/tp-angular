@@ -13,11 +13,17 @@ export class ItemComponent {
   @Input({
     required: true,
   })
+
   cv: Cv | null = null;
   @Output()
   selectCv = new EventEmitter<Cv>();
+  @Input() imageHeigth: number = 50;
+  @Input() imageWidth: number = 50;
   constructor(private cvService: CvService) {}
   onSelectCv() {
-    if (this.cv) this.cvService.selectCv(this.cv);
+    if (this.cv) {
+      this.cvService.selectCv(this.cv);
+    this.selectCv.emit(this.cv);
+    }
   }
 }
