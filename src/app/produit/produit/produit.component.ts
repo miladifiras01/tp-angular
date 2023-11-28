@@ -17,9 +17,7 @@ export class ProduitComponent {
     this.produits$ = this.produitNumber$.pipe(
       concatMap((skip) => this.produitService.getProduits(12, skip)),
       takeWhile((produits) => produits.length === 12, true),
-      scan((previous, res)=> {
-        return [...previous, ...res]
-      }, [] as Produit[]),
+      scan((previous, res)=> [...previous, ...res], [] as Produit[]),
     );
     this.produits$.subscribe({
       complete: () => {
