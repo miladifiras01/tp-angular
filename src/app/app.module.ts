@@ -5,10 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CvComponent } from "./cv/cv/cv.component";
-import { ListComponent } from "./cv/list/list.component";
-import { ItemComponent } from "./cv/item/item.component";
-import { CardComponent } from "./cv/card/card.component";
 import { HighlightDirective } from "./directives/highlight.directive";
 import { DefaultImagePipe } from "./cv/pipes/default-image.pipe";
 import { TestPureComponent } from "./test-pure/test-pure.component";
@@ -28,19 +24,14 @@ import { TestformComponent } from "./components/testform/testform.component";
 import { ObservableComponent } from "./rxjs/observable/observable.component";
 import { ToastrModule } from "ngx-toastr";
 import { SliderComponent } from "./rxjs/slider/slider.component";
-import { ListHiredComponent } from './cv/list-hired/list-hired.component';
-import { LoginComponent } from './login/login/login.component';
-import { SearchCvComponent } from './cv/autocomplete/autocomplete.component';
 import { MergeComponent } from './merge/merge.component';
 import { ProduitComponent } from './produit/produit/produit.component';
+import { CvModule } from "./cv/cv.module";
+import { LoginModule } from "./login/login.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CvComponent,
-    ListComponent,
-    ItemComponent,
-    CardComponent,
     HighlightDirective,
     DefaultImagePipe,
     TestPureComponent,
@@ -50,15 +41,10 @@ import { ProduitComponent } from './produit/produit/produit.component';
     RouterParamComponent,
     FrontComponent,
     AdminComponent,
-    MasterDetailsComponent,
-    DetailCvComponent,
     NF404Component,
     TestformComponent,
     ObservableComponent,
     SliderComponent,
-    ListHiredComponent,
-    LoginComponent,
-    SearchCvComponent,
     MergeComponent,
     ProduitComponent,
   ],

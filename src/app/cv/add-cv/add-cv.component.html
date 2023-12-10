@@ -1,0 +1,41 @@
+<form [formGroup]="cvForm" (ngSubmit)="addCv()">
+    <label for="name">name</label>
+    <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name"
+        [ngClass]="{ 'is-invalid': f['name'].touched && f['name'].errors }" />
+    <div *ngIf="f['name'].touched && f['name'].errors" class="invalid-feedback">
+        <div *ngIf="f['name'].errors['name']">the name field is required</div>
+    </div>
+
+    <label for="firstname">first name</label>
+    <input type="text" formControlName="firstName" class="form-control" id="firstname" placeholder="first name"
+        [ngClass]="{ 'is-invalid': f['firstName'].touched && f['firstName'].errors }" />
+    <div *ngIf="f['firstName'].touched && f['firstName'].errors" class="invalid-feedback">
+        <div *ngIf="f['firstName'].errors['firstName']">the firstname field is required</div>
+    </div>
+    <label for="job">job</label>
+    <input type="text" formControlName="job" class="form-control" id="job" placeholder="job"
+        [ngClass]="{ 'is-invalid': f['job'].touched && f['job'].errors }" />
+    <div *ngIf="f['job'].touched && f['job'].errors" class="invalid-feedback">
+        <div *ngIf="f['job'].errors['job']">the job field is required</div>
+    </div>
+    <label for="description">description</label>
+    <input type="text" formControlName="description" class="form-control" id="description" placeholder="description"
+        [ngClass]="{ 'is-invalid': f['description'].touched && f['description'].errors }" />
+    <div *ngIf="f['description'].touched && f['description'].errors" class="invalid-feedback">
+        <div *ngIf="f['description'].errors['description']">the description field is required</div>
+    </div>
+    <label for="path">Path</label>
+    <input id="path" type="text" name="path" class="form-control">
+
+    <label for="age">age</label>
+    <input type="number" formControlName="age" class="form-control" id="age" placeholder="age" />
+    <label for="age">cin</label>
+    <input type="number" formControlName="cin" class="form-control" id="cin" placeholder="cin" />
+
+
+
+    <button class="btn btn-primary mb-2 mt-2" [disabled]="cvForm.invalid" type="submit">Add cv</button>
+    <div class="alert alert-danger" *ngIf="error">
+        there is an error please try again !
+    </div>
+</form>

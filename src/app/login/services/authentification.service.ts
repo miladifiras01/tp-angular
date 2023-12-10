@@ -49,4 +49,7 @@ export class AuthentificationService {
       })
     )
   }
+  register(data: User){
+    return this.http.post("https://apilb.tridevs.net/api/Users", data);
+  }
 }

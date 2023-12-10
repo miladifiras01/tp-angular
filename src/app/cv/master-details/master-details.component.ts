@@ -14,7 +14,7 @@ export class MasterDetailsComponent {
   subscription?: Subscription;
   constructor(private cvService: CvService, private router: Router){
     this.cvs$ = this.cvService.getCvsFromAPI();
-    this.subscription = this.cvService.selectCv$.subscribe((cv)=>{this.router.navigate(['list', cv.id])});
+    this.subscription = this.cvService.selectCv$.subscribe((cv)=>{this.router.navigate(['cv/list', cv.id])});
   }
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();

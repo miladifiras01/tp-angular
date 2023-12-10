@@ -13,32 +13,27 @@ import { MergeComponent } from './merge/merge.component';
 import { ProduitComponent } from './produit/produit/produit.component';
 import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 import { detailResolver } from './resolvers/detail.resolver';
+import { RegisterComponent } from './login/register/register.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { addCvGuard } from './guards/add-cv.guard';
+import { CustomPreloadingStrategy } from './custom-preloading-strategy';
 // pipe
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  {path: 'auth', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
   { path: 'merge', component: MergeComponent },
   { path: 'products', component: ProduitComponent },
   {
     path: '',
     component: FrontComponent,
     children: [
-      { path: 'cv', component: CvComponent },
-      { path: 'cv/:id', component: DetailCvComponent, resolve: { cv: detailResolver } },
-      {
-        path: 'list',
-        component: MasterDetailsComponent,
-        children: [
-          {
-            path: ':id',
-            component: DetailCvComponent,
-            resolve: { cv: detailResolver },
-          },
-        ],
-      },
-      { path: 'list/:id?', component: MasterDetailsComponent },
       { path: 'route/:quelquechose', component: RouterParamComponent },
     ],
+  },
+  {
+    path: 'cv',
+    loadChildren: () => import('./cv/cv.module').then((m) => m.CvModule),
+    data: { preload: true },
   },
   {
     path: 'admin',
@@ -49,7 +44,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: CustomPreloadingStrategy
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

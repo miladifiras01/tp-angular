@@ -24,13 +24,6 @@
         <a
           class="nav-link"
           aria-current="page"
-          [routerLink]="['cv']"
-          routerLinkActive="active text-primary"
-          >Cv</a
-        >
-        <a
-          class="nav-link"
-          aria-current="page"
           [routerLink]="['products']"
           routerLinkActive="active text-primary"
           >Products</a
@@ -45,7 +38,7 @@
         <ng-container *ngIf="!isLoggedIn ;else login">
           <a class="nav-link"
           aria-current="page"
-          [routerLink]="['login']"
+          [routerLink]="['auth/login']"
           routerLinkActive="active text-primary" 
           >login</a>
         </ng-container>
@@ -54,7 +47,29 @@
           [routerLink]="['login']"
           routerLinkActive="active text-primary"
           (click)="loggingout()" 
-          >logout</a></ng-template>
+          >logout</a>
+          <a
+          class="nav-link"
+          aria-current="page"
+          [routerLink]="['cv']"
+          routerLinkActive="active text-primary"
+          >Cv</a
+        >
+          <a
+          class="nav-link"
+          aria-current="page"
+          [routerLink]="['cv/add']"
+          routerLinkActive="active text-primary"
+          >Add Cv</a
+        >
+        <a
+        class="nav-link"
+        aria-current="page"
+        [routerLink]="['auth/register']"
+        routerLinkActive="active text-primary"
+        >Add User</a
+      >
+        </ng-template>
       </div>
     </div>
   </div>

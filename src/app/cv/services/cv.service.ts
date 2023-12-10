@@ -55,4 +55,8 @@ export class CvService {
       return of([]);
     }
   }
+  addCv(data: any){
+    let token = localStorage.getItem('token');
+    return this.http.post("https://apilb.tridevs.net/api/personnes?access_token=" + token , data);
+  }
 }
